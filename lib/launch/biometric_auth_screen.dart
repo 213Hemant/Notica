@@ -26,7 +26,7 @@ class _BiometricAuthScreenState extends State<BiometricAuthScreen> {
         localizedReason: 'Use your fingerprint to continue',
         options: const AuthenticationOptions(
           biometricOnly: true,
-          stickyAuth: true,
+          stickyAuth: false, // Force reauthentication on each app start
           useErrorDialogs: true,
         ),
       );
@@ -65,10 +65,7 @@ class _BiometricAuthScreenState extends State<BiometricAuthScreen> {
                   color: Theme.of(context).iconTheme.color,
                 ),
                 const SizedBox(height: 20),
-                Text(
-                  _authStatus,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
+                Text(_authStatus, style: Theme.of(context).textTheme.bodyLarge),
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: _isAuthenticating ? null : _authenticate,
